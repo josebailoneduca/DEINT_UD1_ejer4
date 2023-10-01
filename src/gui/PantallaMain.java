@@ -11,8 +11,13 @@ import java.util.Date;
 import logica.MezcladoraNombres;
 
 /**
- *
- * @author 2dam
+ * Pantalla principal de la aplicacion. 
+ * Contiene:
+ *  - dos campos para nombres
+ *  - boton mezclar
+ *  - boton reiniciar
+ * 
+ * @author Jose Javier Bailon Ortiz
  */
 public class PantallaMain extends javax.swing.JFrame {
 
@@ -35,15 +40,16 @@ public class PantallaMain extends javax.swing.JFrame {
      * Controla el aviso de error
      */
     public void avisoError() {
-        //creacion y musetra de la pantlla de error
+        //creacion y muestra de la pantlla de error
         PantallaError pE = new PantallaError(this, true);
         pE.setLocationRelativeTo(this);
         pE.setVisible(true);
+        //desactivar la parte de la ventana referente a la muestra de resultado
         desactivarResultado();
     }
 
     /**
-     * Reinicia la interface
+     * Reinicia la interface y actualiza la hora
      */
     public void resetInterface() {
         this.activarIntroducion();
@@ -52,7 +58,7 @@ public class PantallaMain extends javax.swing.JFrame {
     }
 
     /**
-     * Activa los campos de introduccion
+     * Activa los campos de introduccion de nombres y el boton de mezclar
      */
     public void activarIntroducion() {
         this.inputNombre1.setText("");
@@ -63,7 +69,7 @@ public class PantallaMain extends javax.swing.JFrame {
     }
 
     /**
-     * Desactiva los campos de introduccion
+     * Desactiva los campos de introduccion y el boton de mezclar
      */
     public void desactivarIntroduccion() {
         this.inputNombre1.setEnabled(false);
@@ -273,6 +279,10 @@ public class PantallaMain extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_inputNombre2ActionPerformed
 
+    /**
+     * Acciiones ejecutadas al pulsar el boton Mezclar
+     * @param evt Evento recibido
+     */
     private void btnMezclarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMezclarActionPerformed
         // recoger datos
         String nombre1 = inputNombre1.getText();
@@ -281,11 +291,16 @@ public class PantallaMain extends javax.swing.JFrame {
         this.mezcladoraNombres.mezcla(nombre1, nombre2);
     }//GEN-LAST:event_btnMezclarActionPerformed
 
+    /**
+     * Accion ejecutada al pulsar el boton Reiniciar
+     * @param evt  Evento recibido
+     */
     private void btnReiniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReiniciarActionPerformed
         this.resetInterface();
     }//GEN-LAST:event_btnReiniciarActionPerformed
 
 
+    //muestra la hora en la ventana principal
     private void ponerHora(){
         Date date = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat("hh:mm");

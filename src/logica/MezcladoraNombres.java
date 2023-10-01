@@ -12,11 +12,16 @@ import java.util.List;
 import java.util.Random;
 
 /**
- *
+ * Inicio del programa. Contiene la logica de control de la mezcla de nombres
+ * 
  * @author Jose Javier Bailón Ortiz
  */
 public class MezcladoraNombres {
 
+     //ATRIBUTOS
+    /**
+     * Referencia a la pantalla principal
+     */
     private PantallaMain pPrin;
 
     /**
@@ -68,7 +73,7 @@ public class MezcladoraNombres {
         String[] v = {"a", "e", "i", "o", "u"};
         List<String> vocales = Arrays.asList(v);
 
-        //Mezclar los tramos
+        //Mezclar los tramos de los nombres
         while (indice1 != nombre1.length() || indice2 != nombre2.length()) {
             float azar = r.nextFloat();
             boolean segmentoEncontrado = false;
@@ -98,7 +103,6 @@ public class MezcladoraNombres {
         }
         //poner en mayuscula la primera letra
         String primeraLetra = resultado.substring(0,1);
-        
         resultado=primeraLetra.toUpperCase()+resultado.substring(1,resultado.length());
         //devolucion del resultado
         return resultado;
@@ -111,9 +115,9 @@ public class MezcladoraNombres {
      * @return True si no es nulo y tiene 4 o mas caracteres. False en otro caso
      */
     private boolean validar(String nombre) {
-        if (nombre == null || nombre.length() < 4) {
+        if (nombre == null || nombre.length() < 4) 
             return false;
-        }
+        
         return true;
     }
 

@@ -7,8 +7,9 @@ Lista de paquetes:
 package gui;
 
 /**
- *
- * @author 2dam
+ * Pantalla que avisa del error en los parametros de los nombres
+ * Contiene un boton para volver a la pantalla principal
+ * @author Jose Javier Bailon Ortiz
  */
 public class PantallaError extends javax.swing.JDialog {
 
@@ -89,10 +90,15 @@ public class PantallaError extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    /**
+     * Accion ejecutada al pulsar el boton volver
+     * @param evt  Evento recibido
+     */
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
         PantallaMain pM=(PantallaMain) this.getParent();
+        //Ordena a la pantalla principal que resetee la interface
         pM.resetInterface();
+        //cirerra la ventana de error
         this.dispose();
     }//GEN-LAST:event_btnVolverActionPerformed
 
