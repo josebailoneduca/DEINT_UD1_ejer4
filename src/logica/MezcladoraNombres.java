@@ -14,7 +14,7 @@ import java.util.Random;
 /**
  * Inicio del programa. Contiene la logica de control de la mezcla de nombres
  * 
- * @author Jose Javier BailÃ³n Ortiz
+ * @author Jose Javier Bailón Ortiz
  */
 public class MezcladoraNombres {
 
@@ -52,11 +52,14 @@ public class MezcladoraNombres {
                 + this.mezclaNombres(nombre1, nombre2) + ", "
                 + this.mezclaNombres(nombre1, nombre2);
 
+        //avisa  all pantalla principal del resultado
         this.pPrin.activarResultado(resultado);
     }
 
     /**
-     * Mezcla dos nombres
+     * Mezcla dos nombres. Lo hace entremezclando tramos de cada nombre de manera aleatoria.
+     * Va avanzando por los nombres detectando tramos que terminan en vocal.
+     * y agregandolos de manera desordenada al resultado.
      *
      * @param nombre1 Primer nombre
      * @param nombre2 Segundo nombre
@@ -75,11 +78,13 @@ public class MezcladoraNombres {
 
         //Mezclar los tramos de los nombres
         while (indice1 != nombre1.length() || indice2 != nombre2.length()) {
+            //decidir de qué palabra se coge el siguiente tramo
             float azar = r.nextFloat();
+            //buscar un tramo en alguna de las palabras
             boolean segmentoEncontrado = false;
-            //coger tramo de primer nombre
+            //si azar es <0.5 coger tramo de primer nombre
             if (azar < 0.5) {
-                //deteccion del tramo que acaba en vocal o en el final de palabra
+                //agregar tramo que acaba en vocal o en el final de palabra
                 while (!segmentoEncontrado && indice1 != nombre1.length()) {
                     String caracter = nombre1.substring(indice1, indice1 + 1);
                     resultado += caracter;
@@ -88,7 +93,7 @@ public class MezcladoraNombres {
                         segmentoEncontrado = true;
                     }
                 }
-            //coger tramo de segundo nombre
+            //si azar no es menor de 0.5 coger tramo de segundo nombre
             } else {
                 //deteccion del tramo que acaba en vocal o en el final de palabra
                 while (!segmentoEncontrado && indice2 != nombre2.length()) {
@@ -115,24 +120,27 @@ public class MezcladoraNombres {
      * @return True si no es nulo y tiene 4 o mas caracteres. False en otro caso
      */
     private boolean validar(String nombre) {
-        if (nombre == null || nombre.length() < 4) 
-            return false;
-        
-        return true;
+        return (nombre != null && nombre.length() >= 4) ;
     }
 
+    /**
+     * Main del programa. crea una instancia de la logica. Despues crea la ventana
+     * principal y le pasa una referencia a la logica.
+     * @param args 
+     */
     public static void main(String[] args) {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+                
                 //creacion de la logica de negocio
                 MezcladoraNombres mN = new MezcladoraNombres();
+                
                 //creacion de la pantalla principal 
-                //(pasando referencia a logico de negocio)
+                //pasando una referencia de la logica a la ventana
                 PantallaMain pPrin = new PantallaMain(mN);
                 //Pasar referencia de la pantalla a logica negocio
                 mN.setpPrin(pPrin);
-
                 //posicionamiento y visualizacin de la ventana principal
                 pPrin.setLocationRelativeTo(null);
                 pPrin.setVisible(true);

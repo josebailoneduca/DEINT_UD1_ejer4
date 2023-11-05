@@ -33,11 +33,10 @@ public class PantallaMain extends javax.swing.JFrame {
         this.resetInterface();
     }
 
-    /*
-     * Metodos propios 
-     */
-    /**
-     * Controla el aviso de error
+    // METODOS PROPIOS
+    
+     /**
+     * Muestra la ventana con el mensaje de error
      */
     public void avisoError() {
         //creacion y muestra de la pantlla de error
@@ -79,6 +78,7 @@ public class PantallaMain extends javax.swing.JFrame {
 
     /**
      * Activa los campos de resultado
+     * @param resultado Resultado a mostrar
      */
     public void activarResultado(String resultado) {
         this.desactivarIntroduccion();
@@ -280,7 +280,7 @@ public class PantallaMain extends javax.swing.JFrame {
     }//GEN-LAST:event_inputNombre2ActionPerformed
 
     /**
-     * Acciiones ejecutadas al pulsar el boton Mezclar
+     * Acciones ejecutadas al pulsar el boton Mezclar
      * @param evt Evento recibido
      */
     private void btnMezclarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMezclarActionPerformed
@@ -304,7 +304,6 @@ public class PantallaMain extends javax.swing.JFrame {
     private void ponerHora(){
         Date date = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat("hh:mm");
-        
         this.lbHora.setText(sdf.format(date));
     }
     
